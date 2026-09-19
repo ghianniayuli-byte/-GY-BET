@@ -1,0 +1,39 @@
+<!doctype html><html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GY BET — Cassino Demo</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#090909;color:#f8f3e7;font-family:Arial,sans-serif}
+header{background:#0d0d0d;border-bottom:1px solid #6e5420;padding:16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}.logo{font-size:25px;font-weight:900;color:#d7ae54}.demo{font-size:9px;border:1px solid #6e5420;padding:6px 8px;border-radius:15px;color:#d8c28c}
+main{max-width:850px;margin:auto;padding:16px 16px 90px}.wallet{background:linear-gradient(135deg,#19150c,#241d0e);border:1px solid #6e5420;border-radius:18px;padding:18px;margin-bottom:14px}.wallet small{color:#c5b68e}.coins{font-size:30px;font-weight:900;color:#e2b957;margin:6px 0 12px}
+button{border:1px solid #74591f;background:#1a160d;color:#f8e5ad;border-radius:10px;padding:10px 13px;font-weight:800}button.gold{background:#c99d3c;color:#171006;border-color:#e0bb61}
+nav{display:flex;gap:8px;overflow:auto;margin-bottom:18px}nav button{white-space:nowrap}.section{font-size:19px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.card{background:#131313;border:1px solid #302719;border-radius:16px;overflow:hidden}.pic{height:105px;display:flex;align-items:center;justify-content:center;font-size:42px;background:radial-gradient(circle,#493919,#17130b)}.info{padding:12px}.info b{font-size:16px}.info p{margin:5px 0 10px;color:#a99d81;font-size:12px}.play{width:100%}
+.panel{background:#111;border:1px solid #302719;border-radius:16px;padding:18px;text-align:center}.wheel{font-size:70px;margin:10px}.choices{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.choices button{min-width:105px}.msg{min-height:22px;color:#e2b957;margin:10px 0}.hist{margin-top:18px}.item{border-bottom:1px solid #282116;padding:10px 0;font-size:13px;color:#c8b991}
+.notice{font-size:11px;color:#827862;line-height:1.5;margin-top:20px}
+@media(max-width:430px){.grid{grid-template-columns:1fr 1fr}.pic{height:90px;font-size:36px}}
+</style></head><body>
+<header><div class="logo">GY BET</div><div class="demo">CASSINO DEMO</div></header>
+<main>
+<div class="wallet"><small>Fichas virtuais</small><div class="coins" id="coins">10.000</div><button class="gold" onclick="add()">+ 1.000 fichas</button></div>
+<nav><button onclick="home()">🎰 Cassino</button><button onclick="game('roleta')">🎡 Roleta</button><button onclick="game('blackjack')">🃏 Blackjack</button><button onclick="game('bacara')">♦️ Bacará</button><button onclick="history()">📜 Histórico</button></nav>
+<div id="app"></div>
+<div class="notice">GY BET é uma demonstração fictícia. As fichas, resultados e jogos são simulados. Não há depósito, saque, prêmio ou dinheiro real.</div>
+</main>
+<script>
+let coins=10000, hist=[];
+const slots=[
+['🐯','Fortune Tiger Demo','🐯'],['🐂','Fortune Ox Demo','🐂'],['🐰','Fortune Rabbit Demo','🐰'],
+['🍭','Sweet Bonanza Demo','🍭'],['⚡','Gates of Olympus Demo','⚡'],['💎','Diamond Spin Demo','💎']
+];
+function fmt(n){return Math.floor(n).toLocaleString('pt-BR')}
+function upd(){document.getElementById('coins').textContent=fmt(coins)}
+function add(){coins+=1000;upd();alert('1.000 fichas virtuais adicionadas!')}
+function home(){document.getElementById('app').innerHTML='<div class="section">🎰 Jogos de cassino</div><div class="grid">'+slots.map((s,i)=>`<div class="card"><div class="pic">${s[0]}</div><div class="info"><b>${s[1]}</b><p>Jogo totalmente simulado</p><button class="gold play" onclick="slot(${i})">Jogar Demo</button></div></div>`).join('')+'</div>'}
+function slot(i){if(coins<100){alert('Fichas insuficientes');return}coins-=100;let r=Math.random();let win=r<.28, ret=win?(r<.05?1500:350):0;coins+=ret;let text=win?'🎉 Bônus virtual: '+fmt(ret)+' fichas':'Resultado: não ganhou fichas';hist.unshift(slots[i][1]+' — '+text);upd();alert(text)}
+function game(type){
+let title=type==='roleta'?'🎡 Roleta Demo':type==='blackjack'?'🃏 Blackjack Demo':'♦️ Bacará Demo';
+document.getElementById('app').innerHTML=`<div class="panel"><h2>${title}</h2><div class="wheel">${type==='roleta'?'🎡':type==='blackjack'?'🃏':'♦️'}</div><p>Escolha uma opção para fazer uma jogada simulada.</p><div class="choices">${(type==='roleta'?['Vermelho','Preto','Número']:type==='blackjack'?['Jogador','Dealer','Empate']:['Jogador','Banco','Empate']).map(x=>`<button onclick="table('${title}','${x}')">${x}</button>`).join('')}</div><div class="msg" id="msg"></div></div>`
+}
+function table(title,choice){if(coins<100){alert('Fichas insuficientes');return}coins-=100;let win=Math.random()<.33;let ret=win?300:0;coins+=ret;let m=win?'🎉 Resultado virtual: +'+fmt(ret)+' fichas':'Resultado virtual: perdeu 100 fichas';document.getElementById('msg').textContent=m;hist.unshift(title+' — '+choice+' — '+m);upd()}
+function history(){document.getElementById('app').innerHTML='<div class="section">📜 Histórico</div><div class="hist">'+(hist.length?hist.map(x=>'<div class="item">'+x+'</div>').join(''):'<div class="item">Nenhuma jogada ainda.</div>')+'</div>'}
+home();upd();
+</script></body></html>
