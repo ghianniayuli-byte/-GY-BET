@@ -3,108 +3,315 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GY BET — Casino Demo</title>
+<title>GY BET - Demo</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#080808;color:#eee}
-header{position:sticky;top:0;z-index:10;background:#090909;border-bottom:1px solid #4b3a12;padding:18px 18px 14px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:30px;font-weight:900;color:#d6ad3a;letter-spacing:2px}.demo{border:1px solid #b28a25;color:#d8b65b;border-radius:20px;padding:9px 14px;font-size:12px}
-.balance{margin:16px;border:1px solid #5d4615;border-radius:22px;padding:20px;background:linear-gradient(135deg,#171208,#0d0c09);text-align:center}
-.balance small{color:#aaa}.balance strong{display:block;font-size:36px;color:#d8ae35;margin:5px}.add{background:#c79d35;border:0;border-radius:12px;padding:12px 18px;font-weight:800}
-nav{display:flex;gap:10px;overflow:auto;padding:8px 16px}.tab{white-space:nowrap;border:1px solid #594719;background:#111;border-radius:14px;padding:12px 17px;color:#ddd}
-.tab.active{background:#34280c;color:#e3b943}.section{padding:8px 16px}.section h2{font-size:22px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.card{background:#121212;border:1px solid #30260e;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px #000}
-.art{height:145px;display:flex;align-items:center;justify-content:center;font-size:62px;background:radial-gradient(circle,#40300d,#15110a)}
-.card h3{margin:12px 12px 4px;font-size:17px}.card p{margin:0 12px 12px;color:#999;font-size:12px}.play{margin:0 12px 14px;width:calc(100% - 24px);border:0;border-radius:12px;padding:12px;background:#c39a32;font-weight:800}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#171a22;border-top:1px solid #555;display:flex;justify-content:space-around;padding:9px 4px;z-index:10}.bottom button{background:none;border:0;color:#aaa;font-size:12px}.bottom b{display:block;color:#7cff73;font-size:20px}
-.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;z-index:20;padding:20px}.modal.open{display:flex}.box{width:min(430px,100%);background:#151515;border:1px solid #755817;border-radius:22px;padding:20px;text-align:center}.close{float:right;background:none;border:0;color:#aaa;font-size:24px}.wheel{font-size:75px;margin:20px}.result{font-size:22px;color:#e0b43e;min-height:30px}.action{background:#c39a32;border:0;border-radius:12px;padding:13px 20px;font-weight:800;margin:7px}
-footer{height:75px}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#090b10;
+  color:white;
+  padding-bottom:90px
+}
+header{
+  height:75px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  background:#171b25;
+  border-bottom:1px solid #333
+}
+.logo{
+  font-size:28px;
+  font-weight:900;
+  color:#d8aa45
+}
+.demo{
+  border:1px solid #d8aa45;
+  color:#d8aa45;
+  padding:10px 15px;
+  border-radius:20px;
+  font-weight:bold
+}
+.balance{
+  margin:15px;
+  padding:18px;
+  border:1px solid #765a20;
+  border-radius:20px;
+  background:#15130d
+}
+.balance small{color:#aaa}
+.balance strong{
+  display:block;
+  font-size:32px;
+  color:#e5b84e;
+  margin:5px 0 12px
+}
+.add{
+  background:#a77c24;
+  border:0;
+  border-radius:10px;
+  padding:12px 18px;
+  font-weight:bold
+}
+nav{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding:5px 15px 15px
+}
+.tab{
+  white-space:nowrap;
+  padding:12px 18px;
+  border:1px solid #5d481b;
+  border-radius:12px;
+  background:#11151c;
+  color:#ddd
+}
+.games{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  padding:15px
+}
+.card{
+  background:#15171d;
+  border:1px solid #30343d;
+  border-radius:18px;
+  overflow:hidden
+}
+.art{
+  height:130px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+  background:linear-gradient(135deg,#17130a,#3a2a0b)
+}
+.card h3{
+  margin:12px 12px 5px;
+  font-size:17px
+}
+.card p{
+  margin:0 12px 12px;
+  color:#999;
+  font-size:13px
+}
+.play{
+  width:calc(100% - 24px);
+  margin:0 12px 14px;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  background:#b88a2d;
+  font-weight:bold
+}
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:75px;
+  background:#171b25;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  border-top:1px solid #333
+}
+footer button{
+  background:none;
+  border:0;
+  color:#aaa;
+  font-size:13px
+}
+footer span{
+  display:block;
+  font-size:25px;
+  margin-bottom:4px
+}
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  align-items:center;
+  justify-content:center;
+  padding:20px
+}
+.box{
+  width:100%;
+  max-width:400px;
+  background:#17191f;
+  border:1px solid #765a20;
+  border-radius:20px;
+  padding:25px;
+  text-align:center
+}
+.close{
+  padding:12px 25px;
+  border:0;
+  border-radius:10px;
+  background:#b88a2d;
+  font-weight:bold
+}
+@media(max-width:500px){
+  .games{grid-template-columns:repeat(2,1fr)}
+}
 </style>
 </head>
+
 <body>
-<header><div class="logo">GY BET</div><div class="demo">CASINO DEMO</div></header>
+
+<header>
+  <div class="logo">GY BET</div>
+  <div class="demo">CASINO DEMO</div>
+</header>
 
 <div class="balance">
-  <small>Fichas virtuais</small><strong id="balance">10.100</strong>
+  <small>Fichas virtuais</small>
+  <strong id="saldo">10.100</strong>
   <button class="add" onclick="addChips()">+ 1.000 fichas</button>
 </div>
 
 <nav>
- <button class="tab active" onclick="filterGames('todos',this)">🎰 Cassino</button>
- <button class="tab" onclick="filterGames('roleta',this)">🎡 Roleta</button>
- <button class="tab" onclick="filterGames('blackjack',this)">🃏 Blackjack</button>
- <button class="tab" onclick="filterGames('baccarat',this)">♦️ Bacará</button>
+  <button class="tab" onclick="filterGames('all')">🎰 Todos</button>
+  <button class="tab" onclick="filterGames('slot')">🔥 Slots</button>
+  <button class="tab" onclick="filterGames('roulette')">🎡 Roleta</button>
+  <button class="tab" onclick="filterGames('card')">🃏 Cartas</button>
 </nav>
 
-<section class="section">
-<h2>🎰 Jogos de cassino</h2>
-<div class="grid" id="games"></div>
-</section>
-<footer></footer>
+<h2 style="padding:0 15px">🎮 Jogos de cassino</h2>
 
-<div class="modal" id="modal">
- <div class="box">
-  <button class="close" onclick="closeGame()">×</button>
-  <h2 id="gameTitle">Jogo Demo</h2>
-  <div class="wheel" id="gameIcon">🎰</div>
-  <div class="result" id="result">Pronto para jogar</div>
-  <p style="color:#999">Modo demonstração — somente fichas virtuais.</p>
-  <button class="action" onclick="play()">JOGAR</button>
-  <button class="action" onclick="closeGame()">FECHAR</button>
- </div>
+<div class="games">
+
+<div class="card" data-type="slot">
+<div class="art">🐯</div>
+<h3>Fortune Tiger Demo</h3>
+<p>Jogo totalmente simulado</p>
+<button class="play" onclick="playGame('Fortune Tiger')">Jogar Demo</button>
 </div>
 
-<div class="bottom">
- <button onclick="filterGames('todos')"><b>⌂</b>Hall</button>
- <button onclick="alert('Depósito desativado no modo demo.')"><b>▣</b>Depósito</button>
- <button onclick="alert('Agência disponível somente no modo demo.')"><b>●</b>Agência</button>
- <button onclick="alert('Promoções de demonstração.')"><b>🎁</b>Promoção</button>
- <button onclick="alert('Perfil demo')"><b>●</b>Perfil</button>
+<div class="card" data-type="slot">
+<div class="art">🐰</div>
+<h3>Fortune Rabbit Demo</h3>
+<p>Jogo totalmente simulado</p>
+<button class="play" onclick="playGame('Fortune Rabbit')">Jogar Demo</button>
+</div>
+
+<div class="card" data-type="slot">
+<div class="art">🐉</div>
+<h3>Fortune Dragon Demo</h3>
+<p>Jogo totalmente simulado</p>
+<button class="play" onclick="playGame('Fortune Dragon')">Jogar Demo</button>
+</div>
+
+<div class="card" data-type="slot">
+<div class="art">💎</div>
+<h3>Diamond Spin Demo</h3>
+<p>Jogo totalmente simulado</p>
+<button class="play" onclick="playGame('Diamond Spin')">Jogar Demo</button>
+</div>
+
+<div class="card" data-type="roulette">
+<div class="art">🎡</div>
+<h3>Roleta Demo</h3>
+<p>Roleta com fichas virtuais</p>
+<button class="play" onclick="playGame('Roleta')">Jogar Demo</button>
+</div>
+
+<div class="card" data-type="card">
+<div class="art">🃏</div>
+<h3>Blackjack Demo</h3>
+<p>Jogo totalmente simulado</p>
+<button class="play" onclick="playGame('Blackjack')">Jogar Demo</button>
+</div>
+
+<div class="card" data-type="card">
+<div class="art">♦️</div>
+<h3>Baccarat Demo</h3>
+<p>Jogo totalmente simulado</p>
+<button class="play" onclick="playGame('Baccarat')">Jogar Demo</button>
+</div>
+
+<div class="card" data-type="slot">
+<div class="art">🍭</div>
+<h3>Sweet Bonanza Demo</h3>
+<p>Jogo totalmente simulado</p>
+<button class="play" onclick="playGame('Sweet Bonanza')">Jogar Demo</button>
+</div>
+
+</div>
+
+<footer>
+<button onclick="filterGames('all')"><span>🏠</span>Hall</button>
+<button onclick="alert('Área de depósito desativada no modo demo.')"><span>💳</span>Depósito</button>
+<button onclick="alert('Agência disponível apenas na demonstração.')"><span>🤝</span>Agência</button>
+<button onclick="alert('Promoções fictícias do modo demo.')"><span>🎁</span>Promoção</button>
+<button onclick="alert('Perfil Demo')"><span>👤</span>Perfil</button>
+</footer>
+
+<div class="modal" id="modal">
+<div class="box">
+<h2 id="resultado">Resultado</h2>
+<p>Esta é uma demonstração usando somente fichas virtuais.</p>
+<button class="close" onclick="closeModal()">Fechar</button>
+</div>
 </div>
 
 <script>
-const games=[
- {name:'Fortune Tiger Demo',icon:'🐯',cat:'todos'},
- {name:'Fortune Rabbit Demo',icon:'🐰',cat:'todos'},
- {name:'Fortune Dragon Demo',icon:'🐉',cat:'todos'},
- {name:'Fortune Ox Demo',icon:'🐂',cat:'todos'},
- {name:'Pinata Wins Demo',icon:'🪅',cat:'todos'},
- {name:'Diamond Spin Demo',icon:'💎',cat:'todos'},
- {name:'Gates of Olympus Demo',icon:'⚡',cat:'todos'},
- {name:'Sweet Bonanza Demo',icon:'🍭',cat:'todos'},
- {name:'Roleta Demo',icon:'🎡',cat:'roleta'},
- {name:'Blackjack Demo',icon:'🃏',cat:'blackjack'},
- {name:'Bacará Demo',icon:'♦️',cat:'baccarat'},
- {name:'Lucky Spin Demo',icon:'🍀',cat:'todos'}
-];
-let current=null, balance=10100;
-const el=id=>document.getElementById(id);
-function render(list=games){
- el('games').innerHTML=list.map((g,i)=>`<article class="card">
- <div class="art">${g.icon}</div><h3>${g.name}</h3><p>Jogo totalmente simulado</p>
- <button class="play" onclick="openGame(${games.indexOf(g)})">Jogar Demo</button></article>`).join('');
+let saldo = 10100;
+
+function atualizar(){
+  document.getElementById("saldo").textContent =
+  saldo.toLocaleString("pt-BR");
 }
-function filterGames(cat,btn){
- document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
- if(btn)btn.classList.add('active');
- render(cat==='todos'?games:games.filter(g=>g.cat===cat));
- window.scrollTo({top:0,behavior:'smooth'});
+
+function addChips(){
+  saldo += 1000;
+  atualizar();
+  alert("+1.000 fichas virtuais adicionadas!");
 }
-function openGame(i){
- current=games[i];el('gameTitle').textContent=current.name;el('gameIcon').textContent=current.icon;
- el('result').textContent='Pronto para jogar';el('modal').classList.add('open');
+
+function playGame(nome){
+  if(saldo < 100){
+    alert("Você precisa de pelo menos 100 fichas virtuais.");
+    return;
+  }
+
+  saldo -= 100;
+  atualizar();
+
+  const ganhou = Math.random() > 0.5;
+
+  if(ganhou){
+    saldo += 200;
+    atualizar();
+    document.getElementById("resultado").textContent =
+    "🎉 Você ganhou 200 fichas!";
+  }else{
+    document.getElementById("resultado").textContent =
+    "Resultado: não ganhou fichas";
+  }
+
+  document.getElementById("modal").style.display="flex";
 }
-function closeGame(){el('modal').classList.remove('open')}
-function play(){
- if(balance<100){el('result').textContent='Você precisa de mais fichas virtuais.';return}
- balance-=100;
- const outcomes=['Você ganhou 250 fichas!','Você ganhou 150 fichas!','Não ganhou fichas desta vez.','Você ganhou 500 fichas!'];
- const r=outcomes[Math.floor(Math.random()*outcomes.length)];
- if(r.includes('ganhou')) balance += Number(r.match(/\d+/)[0]);
- el('balance').textContent=balance.toLocaleString('pt-BR');
- el('result').textContent=r;
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
 }
-function addChips(){balance+=1000;el('balance').textContent=balance.toLocaleString('pt-BR')}
-render();
+
+function filterGames(tipo){
+  document.querySelectorAll(".card").forEach(card=>{
+    if(tipo==="all" || card.dataset.type===tipo){
+      card.style.display="block";
+    }else{
+      card.style.display="none";
+    }
+  });
+}
 </script>
+
 </body>
 </html>
