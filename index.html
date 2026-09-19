@@ -1,39 +1,61 @@
-<!doctype html><html lang="pt-BR"><head>
+<!doctype html>
+<html lang="pt-BR">
+<head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>GY BET — Cassino Demo</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#090909;color:#f8f3e7;font-family:Arial,sans-serif}
-header{background:#0d0d0d;border-bottom:1px solid #6e5420;padding:16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}.logo{font-size:25px;font-weight:900;color:#d7ae54}.demo{font-size:9px;border:1px solid #6e5420;padding:6px 8px;border-radius:15px;color:#d8c28c}
-main{max-width:850px;margin:auto;padding:16px 16px 90px}.wallet{background:linear-gradient(135deg,#19150c,#241d0e);border:1px solid #6e5420;border-radius:18px;padding:18px;margin-bottom:14px}.wallet small{color:#c5b68e}.coins{font-size:30px;font-weight:900;color:#e2b957;margin:6px 0 12px}
-button{border:1px solid #74591f;background:#1a160d;color:#f8e5ad;border-radius:10px;padding:10px 13px;font-weight:800}button.gold{background:#c99d3c;color:#171006;border-color:#e0bb61}
-nav{display:flex;gap:8px;overflow:auto;margin-bottom:18px}nav button{white-space:nowrap}.section{font-size:19px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.card{background:#131313;border:1px solid #302719;border-radius:16px;overflow:hidden}.pic{height:105px;display:flex;align-items:center;justify-content:center;font-size:42px;background:radial-gradient(circle,#493919,#17130b)}.info{padding:12px}.info b{font-size:16px}.info p{margin:5px 0 10px;color:#a99d81;font-size:12px}.play{width:100%}
-.panel{background:#111;border:1px solid #302719;border-radius:16px;padding:18px;text-align:center}.wheel{font-size:70px;margin:10px}.choices{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.choices button{min-width:105px}.msg{min-height:22px;color:#e2b957;margin:10px 0}.hist{margin-top:18px}.item{border-bottom:1px solid #282116;padding:10px 0;font-size:13px;color:#c8b991}
-.notice{font-size:11px;color:#827862;line-height:1.5;margin-top:20px}
-@media(max-width:430px){.grid{grid-template-columns:1fr 1fr}.pic{height:90px;font-size:36px}}
-</style></head><body>
-<header><div class="logo">GY BET</div><div class="demo">CASSINO DEMO</div></header>
+*{box-sizing:border-box}body{margin:0;background:#11151d;color:#fff;font-family:Arial,sans-serif;padding-bottom:75px}
+header{height:72px;background:#1d2330;border-bottom:1px solid #604b20;display:flex;align-items:center;justify-content:space-between;padding:0 15px;position:sticky;top:0;z-index:9}
+.logo{font-size:29px;font-weight:900;color:#d8ad4c}.balance{background:#a7f779;color:#081008;padding:9px 14px;border-radius:25px;font-weight:900}
+main{max-width:850px;margin:auto;padding:14px}.hero{height:155px;border-radius:18px;background:linear-gradient(125deg,#164a26,#87c93d);padding:20px;position:relative;overflow:hidden;margin-bottom:10px}.hero b{font-size:37px;text-shadow:0 3px 3px #174d1d}.hero span{display:block;margin-top:8px;font-weight:bold}
+nav.tabs{display:flex;gap:8px;overflow:auto;margin:10px 0}.tabs button{white-space:nowrap;background:#242b38;border:1px solid #384252;color:#fff;border-radius:13px;padding:12px 15px;font-weight:bold}.tabs button.active{border-color:#d0a342;color:#e5bd62}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.game{background:#252c38;border-radius:14px;overflow:hidden}.cover{height:145px;background:radial-gradient(circle,#5a421b,#211b11);display:flex;align-items:center;justify-content:center;position:relative}.emoji{font-size:56px}.star{position:absolute;right:6px;top:4px;font-size:25px}.name{text-align:center;font-weight:900;font-size:13px;padding:7px 3px;height:45px}.game button{width:100%;border:0;background:#c9a13e;color:#171108;padding:9px;font-weight:900}
+.modal{position:fixed;inset:0;background:#000c;z-index:20;display:none;align-items:center;justify-content:center;padding:15px}.box{background:#1d2330;border:1px solid #765b23;border-radius:20px;width:min(520px,100%);padding:20px;text-align:center;max-height:90vh;overflow:auto}.box h2{color:#e1b754;margin-top:0}
+.bigslots{display:flex;justify-content:center;gap:7px;margin:18px 0}.reel{width:80px;height:85px;background:#f5f1e6;color:#111;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:42px;border:4px solid #b99034}.playrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.playrow button,.close{border:0;border-radius:10px;padding:11px 17px;font-weight:900;background:#cda445;color:#171108}.table{background:#0d482f;border-radius:18px;padding:20px;margin:12px 0}.wheel{font-size:80px;margin:5px}.cards{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.card{background:#f7f5ee;color:#111;border-radius:9px;padding:13px 11px;font-size:22px;min-width:55px}.result{min-height:28px;color:#e5bd62;font-weight:bold;margin:10px}.note{font-size:10px;color:#8f9bad;text-align:center;margin-top:16px}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:70px;background:#202633;border-top:1px solid #485466;display:flex;justify-content:space-around;z-index:10}.bottom button{background:none;border:0;color:#9ba6b8;font-size:12px}.bottom button:first-child{color:#6df06c}.bottom span{display:block;font-size:23px}
+@media(max-width:500px){.grid{grid-template-columns:repeat(4,1fr)}.cover{height:130px}.emoji{font-size:45px}.name{font-size:11px}.hero b{font-size:31px}}
+</style></head>
+<body>
+<header><div class="logo">GY BET</div><div class="balance" id="bal">10.000 🪙</div></header>
 <main>
-<div class="wallet"><small>Fichas virtuais</small><div class="coins" id="coins">10.000</div><button class="gold" onclick="add()">+ 1.000 fichas</button></div>
-<nav><button onclick="home()">🎰 Cassino</button><button onclick="game('roleta')">🎡 Roleta</button><button onclick="game('blackjack')">🃏 Blackjack</button><button onclick="game('bacara')">♦️ Bacará</button><button onclick="history()">📜 Histórico</button></nav>
-<div id="app"></div>
-<div class="notice">GY BET é uma demonstração fictícia. As fichas, resultados e jogos são simulados. Não há depósito, saque, prêmio ou dinheiro real.</div>
+<div class="hero"><b>GY BET</b><span>🎰 CASSINO DEMO • JOGOS INTERATIVOS</span><small>Fichas totalmente virtuais</small></div>
+<nav class="tabs"><button class="active" onclick="filter('all')">🔥 Quente</button><button onclick="filter('slot')">🎰 Slots</button><button onclick="filter('table')">🎡 Mesas</button></nav>
+<div class="grid" id="grid"></div>
+<div class="note">Demonstração fictícia: sem depósitos, saques, prêmios ou dinheiro real.</div>
 </main>
+<div class="modal" id="modal"><div class="box" id="box"></div></div>
+<div class="bottom"><button onclick="filter('all')"><span>🏠</span>Hall</button><button onclick="addCoins()"><span>🪙</span>+ fichas</button><button onclick="show('Perfil','Área de perfil da demonstração.')"><span>👤</span>Perfil</button></div>
 <script>
-let coins=10000, hist=[];
-const slots=[
-['🐯','Fortune Tiger Demo','🐯'],['🐂','Fortune Ox Demo','🐂'],['🐰','Fortune Rabbit Demo','🐰'],
-['🍭','Sweet Bonanza Demo','🍭'],['⚡','Gates of Olympus Demo','⚡'],['💎','Diamond Spin Demo','💎']
+let coins=10000;
+const games=[
+['slot','🐯','Fortune Tiger'],['slot','🐰','Fortune Rabbit'],['slot','🐉','Fortune Dragon'],['slot','🐂','Fortune Ox'],
+['slot','🐟','Fortune Fish'],['slot','🎀','Pinata Wins'],['slot','🍭','Sweet Bonanza'],['slot','⚡','Olympus Demo'],
+['slot','💎','Diamond Spin'],['slot','🦊','Fox Treasure'],['table','🎡','Roleta Demo'],['table','🃏','Blackjack Demo'],
+['table','♦️','Bacará Demo']
 ];
-function fmt(n){return Math.floor(n).toLocaleString('pt-BR')}
-function upd(){document.getElementById('coins').textContent=fmt(coins)}
-function add(){coins+=1000;upd();alert('1.000 fichas virtuais adicionadas!')}
-function home(){document.getElementById('app').innerHTML='<div class="section">🎰 Jogos de cassino</div><div class="grid">'+slots.map((s,i)=>`<div class="card"><div class="pic">${s[0]}</div><div class="info"><b>${s[1]}</b><p>Jogo totalmente simulado</p><button class="gold play" onclick="slot(${i})">Jogar Demo</button></div></div>`).join('')+'</div>'}
-function slot(i){if(coins<100){alert('Fichas insuficientes');return}coins-=100;let r=Math.random();let win=r<.28, ret=win?(r<.05?1500:350):0;coins+=ret;let text=win?'🎉 Bônus virtual: '+fmt(ret)+' fichas':'Resultado: não ganhou fichas';hist.unshift(slots[i][1]+' — '+text);upd();alert(text)}
-function game(type){
-let title=type==='roleta'?'🎡 Roleta Demo':type==='blackjack'?'🃏 Blackjack Demo':'♦️ Bacará Demo';
-document.getElementById('app').innerHTML=`<div class="panel"><h2>${title}</h2><div class="wheel">${type==='roleta'?'🎡':type==='blackjack'?'🃏':'♦️'}</div><p>Escolha uma opção para fazer uma jogada simulada.</p><div class="choices">${(type==='roleta'?['Vermelho','Preto','Número']:type==='blackjack'?['Jogador','Dealer','Empate']:['Jogador','Banco','Empate']).map(x=>`<button onclick="table('${title}','${x}')">${x}</button>`).join('')}</div><div class="msg" id="msg"></div></div>`
+function money(){document.getElementById('bal').textContent=Math.floor(coins).toLocaleString('pt-BR')+' 🪙'}
+function filter(t){let a=t==='all'?games:games.filter(g=>g[0]===t);document.getElementById('grid').innerHTML=a.map((g,i)=>`<div class="game"><div class="cover"><span class="emoji">${g[1]}</span><span class="star">☆</span></div><div class="name">${g[2]}</div><button onclick="openGame('${g[2]}','${g[0]}','${g[1]}')">JOGAR</button></div>`).join('')}
+function modal(s){document.getElementById('box').innerHTML=s;document.getElementById('modal').style.display='flex'}
+function close(){document.getElementById('modal').style.display='none'}
+function addCoins(){coins+=1000;money();alert('+ 1.000 fichas virtuais')}
+function openGame(name,type,emoji){
+if(type==='slot')slotGame(name,emoji);else if(name.includes('Roleta'))roulette();else if(name.includes('Blackjack'))blackjack();else baccarat()
 }
-function table(title,choice){if(coins<100){alert('Fichas insuficientes');return}coins-=100;let win=Math.random()<.33;let ret=win?300:0;coins+=ret;let m=win?'🎉 Resultado virtual: +'+fmt(ret)+' fichas':'Resultado virtual: perdeu 100 fichas';document.getElementById('msg').textContent=m;hist.unshift(title+' — '+choice+' — '+m);upd()}
-function history(){document.getElementById('app').innerHTML='<div class="section">📜 Histórico</div><div class="hist">'+(hist.length?hist.map(x=>'<div class="item">'+x+'</div>').join(''):'<div class="item">Nenhuma jogada ainda.</div>')+'</div>'}
-home();upd();
+function slotGame(name,emoji){
+modal(`<h2>${name}</h2><p>🎰 Aposte fichas virtuais e gire os rolos.</p><div class="bigslots"><div class="reel" id="r1">❔</div><div class="reel" id="r2">❔</div><div class="reel" id="r3">❔</div></div><div class="result" id="sr"></div><div class="playrow"><button onclick="spin('${name}','${emoji}')">GIRAR — 100 🪙</button><button class="close" onclick="close()">FECHAR</button></div>`)
+}
+function spin(name,emoji){
+if(coins<100){document.getElementById('sr').textContent='Fichas insuficientes';return}
+coins-=100;money();let sy=['🍒','🍋','🔔','💎','7️⃣',emoji];let a=sy[Math.floor(Math.random()*sy.length)],b=sy[Math.floor(Math.random()*sy.length)],c=sy[Math.floor(Math.random()*sy.length)];
+r1.textContent=a;r2.textContent=b;r3.textContent=c;let win=(a===b&&b===c),two=(a===b||b===c||a===c),gain=win?1000:two?200:0;coins+=gain;money();document.getElementById('sr').textContent=win?'🎉 JACKPOT DEMO! +1.000 fichas':two?'✨ Duas iguais! +200 fichas':'Resultado: -100 fichas'}
+function roulette(){modal(`<h2>🎡 Roleta Demo</h2><div class="table"><div class="wheel">🎡</div><p>Escolha uma cor ou número.</p><div class="playrow"><button onclick="roulettePlay('Vermelho')">🔴 Vermelho</button><button onclick="roulettePlay('Preto')">⚫ Preto</button><button onclick="roulettePlay('Verde')">🟢 Verde</button></div><div class="result" id="rr"></div></div><button class="close" onclick="close()">FECHAR</button>`)}
+function roulettePlay(choice){if(coins<100){rr.textContent='Fichas insuficientes';return}coins-=100;let r=Math.random(),res=r<.47?'Vermelho':r<.94?'Preto':'Verde';let gain=res===choice?(choice==='Verde'?3000:200):0;coins+=gain;money();rr.textContent=res===choice?'🎉 Acertou! +'+gain+' fichas':'Saiu '+res+'. Resultado negativo.'}
+function card(){let suits=['♥️','♦️','♣️','♠️'];let rank=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];return rank[Math.floor(Math.random()*rank.length)]+suits[Math.floor(Math.random()*4)]}
+function val(c){let n=c.slice(0,-2);if(['J','Q','K'].includes(n))return 10;if(n==='A')return 11;return +n}
+function blackjack(){modal(`<h2>🃏 Blackjack Demo</h2><p>Você recebe duas cartas. O dealer recebe duas.</p><div class="table"><div>Suas cartas</div><div class="cards" id="you"></div><div style="margin-top:10px">Dealer</div><div class="cards" id="dealer"></div><div class="result" id="br"></div></div><button class="gold" onclick="bjPlay()">JOGAR — 100 🪙</button> <button class="close" onclick="close()">FECHAR</button>`)}
+function bjPlay(){if(coins<100){br.textContent='Fichas insuficientes';return}coins-=100;let y=[card(),card()],d=[card(),card()];let ys=y.reduce((s,c)=>s+val(c),0),ds=d.reduce((s,c)=>s+val(c),0);if(ys>21)ys-=10;if(ds>21)ds-=10;let gain=ys>ds&&ys<=21?300:(ys===ds?100:0);coins+=gain;money();you.innerHTML=y.map(c=>`<span class="card">${c}</span>`).join('');dealer.innerHTML=d.map(c=>`<span class="card">${c}</span>`).join('');br.textContent=ys>ds&&ys<=21?'🎉 Você ganhou +300 fichas':ys===ds?'Empate: +100 fichas':'Dealer venceu.'}
+function baccarat(){modal(`<h2>♦️ Bacará Demo</h2><p>Escolha Jogador, Banco ou Empate.</p><div class="table"><div class="playrow"><button onclick="bacPlay('Jogador')">👤 Jogador</button><button onclick="bacPlay('Banco')">🏦 Banco</button><button onclick="bacPlay('Empate')">🤝 Empate</button></div><div class="result" id="bacr"></div></div><button class="close" onclick="close()">FECHAR</button>`)}
+function bacPlay(choice){if(coins<100){bacr.textContent='Fichas insuficientes';return}coins-=100;let a=['Jogador','Banco','Empate'][Math.floor(Math.random()*3)],gain=a===choice?(a==='Empate'?800:200):0;coins+=gain;money();bacr.textContent=a===choice?'🎉 Resultado: '+a+' — +'+gain+' fichas':'Resultado: '+a+' — não ganhou fichas'}
+function show(t,p){modal(`<h2>${t}</h2><p>${p}</p><button class="close" onclick="close()">FECHAR</button>`)}
+money();filter('all');
 </script></body></html>
